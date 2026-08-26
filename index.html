@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yee Winnie — Digital & Growth Marketing Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0f0f13;
+            --bg-alt: #18181f;
+            --surface: #1e1e28;
+            --surface-hover: #25252f;
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.18);
+            --text: #f4f4f5;
+            --text-light: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #a78bfa;
+            --accent-2: #f0abfc;
+            --accent-glow: rgba(167,139,250,0.15);
+            --gradient: linear-gradient(135deg, #a78bfa 0%, #f0abfc 100%);
+            --gradient-dark: linear-gradient(135deg, #1e1e28 0%, #18181f 100%);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.4);
+            --shadow-glow: 0 0 40px var(--accent-glow);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--accent); color: var(--bg); }
+
+        /* ========== NAVBAR ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15,15,19,0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: padding 0.3s ease;
+        }
+
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            padding: 0.5rem 1.25rem;
+            background: var(--gradient);
+            color: var(--bg);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(240,171,252,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 1rem;
+            background: rgba(167,139,250,0.1);
+            border: 1px solid rgba(167,139,250,0.25);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+            50% { opacity: 0.6; box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.75rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--accent-glow);
+        }
+
+        .btn-ghost {
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn svg { width: 16px; height: 16px; }
+
+        .hero-socials {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .hero-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            transition: all 0.25s ease;
+        }
+
+        .hero-socials a:hover {
+            background: rgba(167,139,250,0.1);
+            border-color: rgba(167,139,250,0.3);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-socials svg { width: 20px; height: 20px; }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        .scroll-hint svg { width: 20px; height: 20px; }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--gradient);
+            border-radius: 1px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        /* ========== SUMMARY BLOCK ========== */
+        .summary-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .summary-block p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .summary-block p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ========== EXPERTISE GRID ========== */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .expertise-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+
+        .expertise-item:hover {
+            background: var(--surface-hover);
+            border-color: rgba(167,139,250,0.3);
+            color: var(--text);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .expertise-item .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gradient);
+            flex-shrink: 0;
+        }
+
+        /* ========== EXPERIENCE CARDS ========== */
+        .exp-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .exp-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2.25rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .exp-card:hover::before { opacity: 1; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-company {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .exp-role {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .exp-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .exp-list {
+            list-style: none;
+            margin-top: 0.75rem;
+        }
+
+        .exp-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        .exp-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65em;
+            width: 6px;
+            height: 6px;
+            border-radius: 2px;
+            background: var(--accent);
+        }
+
+        .exp-list li strong { color: var(--text); font-weight: 600; }
+
+        .exp-achievements {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .achievements-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-2);
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-achievements li::before { background: var(--accent-2); border-radius: 50%; }
+
+        /* ========== TWO COLUMN ========== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* ========== INFO CARD ========== */
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 2rem;
+            margin-bottom: 1.25rem;
+            transition: all 0.25s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .info-card:last-child { margin-bottom: 0; }
+
+        .info-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card .info-sub {
+            font-size: 0.875rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card .info-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .info-card .info-detail {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* ========== CERT LIST ========== */
+        .cert-list { list-style: none; }
+
+        .cert-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .cert-list li:last-child { border-bottom: none; }
+
+        .cert-list li svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+
+        /* ========== LANGUAGES ========== */
+        .lang-item { margin-bottom: 1rem; }
+        .lang-item:last-child { margin-bottom: 0; }
+
+        .lang-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+        }
+
+        .lang-level {
+            font-size: 0.7rem;
+            color: var(--accent);
+            background: rgba(167,139,250,0.1);
+            padding: 0.15rem 0.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .lang-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .lang-bar-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        /* ========== HIGHLIGHT CARD ========== */
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(240,171,252,0.05));
+            border: 1px solid rgba(167,139,250,0.2);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .highlight-card .icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-card .icon-circle svg {
+            width: 22px;
+            height: 22px;
+            color: var(--bg);
+        }
+
+        .highlight-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ========== FREELANCE LIST ========== */
+        .freelance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .freelance-grid li {
+            list-style: none;
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.83rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .freelance-grid li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ========== AVAILABILITY CTA ========== */
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-card > * { position: relative; z-index: 1; }
+
+        .cta-card h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            background: rgba(16,185,129,0.1);
+            color: #10b981;
+            border: 1px solid rgba(16,185,129,0.25);
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer .footer-name {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .nav { padding: 0.75rem 1rem; }
+            .nav-links { display: none; }
+            .section { padding: 4rem 1.25rem; }
+            .hero { padding: 5rem 1.25rem 3rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .freelance-grid { grid-template-columns: 1fr; }
+            .summary-stats { grid-template-columns: 1fr; gap: 1rem; }
+            .exp-card { padding: 1.5rem; }
+            .cta-section { padding: 4rem 1.25rem; }
+            .cta-card { padding: 2.5rem 1.5rem; }
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            body { background: #fff; color: #1a1a1a; }
+            .nav, .scroll-hint, .hero-bg { display: none; }
+            .hero { min-height: auto; padding: 2rem; }
+            .section { padding: 2rem; }
+            .exp-card, .info-card, .summary-block, .cta-card {
+                background: #f8f8f8; border: 1px solid #ddd; box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="nav">
+    <div class="nav-logo">Yee<span>.</span>Winnie</div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="pulse"></span>
+            Available for new opportunities
+        </div>
+        <h1 class="hero-title">
+            Digital &amp; Growth<br>
+            <span class="gradient-text">Marketing Professional</span>
+        </h1>
+        <p class="hero-subtitle">
+            15+ years driving digital marketing, brand communications, influencer marketing,
+            and content strategy across Singapore. Transforming social commerce into revenue.
+        </p>
+        <div class="hero-actions">
+            <a href="#experience" class="btn btn-primary">
+                View Experience
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+        <div class="hero-socials">
+            <a href="mailto:ge_wnie@hotmail.com" title="Email" aria-label="Email">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </a>
+            <a href="tel:+6596792746" title="Phone" aria-label="Phone">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" title="LinkedIn" aria-label="LinkedIn">
+                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+            </a>
+            <!-- Xiaohongshu -->
+            <a href="#" title="Xiaohongshu" aria-label="Xiaohongshu">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FF2442"/><text x="12" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="Arial">RED</text></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="#" title="TikTok" aria-label="TikTok">
+                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.6-4.37c.3 0 .59.04.87.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43V8.68a8.16 8.16 0 004.77 1.53V6.69h-1.04z"></path></svg>
+            </a>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+    </div>
+</section>
+
+<!-- ====== ABOUT / SUMMARY ====== -->
+<section class="section" id="about">
+    <div class="section-inner">
+        <div class="section-label reveal">About</div>
+        <h2 class="section-title reveal">Turning channels into<br>revenue engines.</h2>
+        <p class="section-desc reveal">
+            Marketing professional with over 15 years of experience driving digital marketing, brand communications,
+            influencer marketing, localisation, and content strategy across Singapore.
+        </p>
+        <div class="summary-block reveal">
+            <p>
+                Proven track record of delivering <strong>integrated marketing campaigns</strong>, transforming emerging
+                social commerce channels into <strong>revenue-generating platforms</strong>, optimising marketing ROI,
+                and leveraging AI to improve marketing productivity. Experienced in <strong>Xiaohongshu, TikTok, OOH
+                advertising</strong>, content strategy, and bilingual communications.
+            </p>
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <div class="stat-num">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">50%</div>
+                    <div class="stat-label">OOH Cost Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== EXPERTISE ====== -->
+<section class="section" id="expertise" style="background: var(--bg-alt);">
+    <div class="section-inner">
+        <div class="section-label reveal">Core Expertise</div>
+        <h2 class="section-title reveal">What I bring to the table.</h2>
+        <p class="section-desc reveal">A blend of creative marketing, data-driven optimisation, and cross-cultural communication skills.</p>
+        <div class="expertise-grid reveal">
+            <div class="expertise-item"><span class="dot"></span> Digital &amp; Growth Marketing</div>
+            <div class="expertise-item"><span class="dot"></span> Brand &amp; Content Strategy</div>
+            <div class="expertise-item"><span class="dot"></span> Social Commerce (Xiaohongshu &amp; TikTok)</div>
+            <div class="expertise-item"><span class="dot"></span> Influencer &amp; KOL Marketing</div>
+            <div class="expertise-item"><span class="dot"></span> AI-Powered Marketing</div>
+            <div class="expertise-item"><span class="dot"></span> Campaign Optimisation</div>
+            <div class="expertise-item"><span class="dot"></span> Marketing Analytics</div>
+            <div class="expertise-item"><span class="dot"></span> Website Localisation &amp; Transcreation</div>
+            <div class="expertise-item"><span class="dot"></span> Marketing Communications</div>
+            <div class="expertise-item"><span class="dot"></span> Project &amp; Campaign Management</div>
+            <div class="expertise-item"><span class="dot"></span> Cross-functional Stakeholder Management</div>
+            <div class="expertise-item"><span class="dot"></span> Bilingual Communications (EN &amp; CN)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== EXPERIENCE ====== -->
+<section class="section" id="experience">
+    <div class="section-inner">
+        <div class="section-label reveal">Professional Experience</div>
+        <h2 class="section-title reveal">Where I've made impact.</h2>
+        <p class="section-desc reveal">From transforming social commerce channels to leading cross-functional marketing campaigns.</p>
+        <div class="exp-cards">
+
+            <!-- Job 1 -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">Beijing 101 Hair Consultants Pte Ltd</div>
+                        <div class="exp-role">Senior Marketing Executive</div>
+                    </div>
+                    <span class="exp-date">May 2024 — Dec 2025</span>
+                </div>
+                <ul class="exp-list">
+                    <li><strong>Solely managed</strong> the full Xiaohongshu (Red Note) marketing strategy for Beijing 101 and the group's skincare brand (21 Aesthetics), including content planning, influencer/KOL collaborations, performance tracking, and revenue generation.</li>
+                    <li><strong>Solely handled</strong> the complete OOH advertising strategy and mall tie-up promotions, from planning and creative execution to placement, budget management, and performance tracking.</li>
+                    <li>Led end-to-end KOL &amp; KOC campaigns, including concept development, shoot production, and post-production coordination.</li>
+                    <li><strong>Sourced, evaluated, and onboarded influencers and KOLs</strong> across Xiaohongshu, Instagram, and TikTok to align with brand positioning and campaign goals.</li>
+                    <li>Developed comprehensive influencer briefs; continuously refined briefs after each shoot to improve content quality.</li>
+                    <li>Coordinated closely with influencers and KOCs throughout the campaign lifecycle — negotiation, scheduling, shoot execution, and performance review.</li>
+                    <li>Managed TikTok and TikTok Shop accounts to boost brand visibility and sales.</li>
+                    <li>Worked cross-functionally with Operations, Creative, and Customer Service teams.</li>
+                </ul>
+                <div class="exp-achievements">
+                    <div class="achievements-label">Key Accomplishments</div>
+                    <ul class="exp-list">
+                        <li>Invited back by the Director after demonstrating success in freelance projects, underscoring trust and value.</li>
+                        <li>Transformed Xiaohongshu from non-performing to consistent revenue generator.</li>
+                        <li>Successfully launched brand presence among Chinese media through strategic influencer partnerships.</li>
+                        <li>Optimised OOH advertising to maximise visibility while <strong>reducing costs by 50%</strong>.</li>
+                        <li>Secured strategic mall partnerships boosting brand visibility and conversions.</li>
+                        <li>Set up customer SOP flow to convert raw leads to appointments.</li>
+                        <li>Transcreated the official website content, moving beyond literal translation to adapt to local market.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">FIGS Inc Pte Ltd</div>
+                        <div class="exp-role">Chinese Team Lead</div>
+                    </div>
+                    <span class="exp-date">Aug 2017 — Nov 2018</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Managed all English ⇔ Chinese translation tasks and website content.</li>
+                    <li>Established and monitored translation timelines and budgets.</li>
+                    <li>Coordinated in-house and freelance translators and agencies.</li>
+                    <li>Conducted comprehensive reviews of translation and editing work.</li>
+                    <li>Liaised with Taiwanese agencies for localisation and multimedia projects.</li>
+                    <li>Cultivated relationships with Taiwanese contacts for event planning and marketing.</li>
+                </ul>
+                <div class="exp-achievements">
+                    <div class="achievements-label">Key Accomplishments</div>
+                    <ul class="exp-list">
+                        <li>Key participant in Fintech Space Taipei opening, showcasing FIGS products.</li>
+                        <li>Led content preparation for Simplified and Traditional Chinese websites.</li>
+                        <li>Organised company participation in Fintech Taipei 2018.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">SG&amp;R Singapore Pte Ltd (HVS)</div>
+                        <div class="exp-role">Senior Consulting Translator / Editor</div>
+                    </div>
+                    <span class="exp-date">Aug 2008 — May 2016</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Oversaw translation and Chinese editing projects across Asia Pacific — feasibility studies, valuation reports, newsletters, websites, and more.</li>
+                    <li>Managed translation timelines, budgets, and teams of in-house and freelance translators.</li>
+                    <li>Coordinated with colleagues and translators in Greater China to ensure quality and consistency.</li>
+                    <li>Established house style rules for Chinese reports and conducted thorough reviews of all work.</li>
+                    <li>Contributed to recruitment, training, and handled IT/admin tasks.</li>
+                </ul>
+                <div class="exp-achievements">
+                    <div class="achievements-label">Key Accomplishments</div>
+                    <ul class="exp-list">
+                        <li>Provided Chinese ⇔ English translation services for major clients including Wanda Group, CapitaLand China, and others.</li>
+                        <li>Translated and reviewed "China's Hotel Industry 2009" with China National Tourism Administration.</li>
+                        <li>Translated and reviewed "China Hotel Investment Watch" annually from 2010 to 2015 with China Tourism Academy.</li>
+                        <li>Produced "Hotel Watch," an annual publication on hotel market outlook.</li>
+                        <li>Contributed to the organisation of China Hotel Investment Conference (CHIC) annually in Shanghai.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Job 4 -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">Beijing 101 Hair Consultants Pte Ltd</div>
+                        <div class="exp-role">Marcom Executive cum Chinese Copywriter</div>
+                    </div>
+                    <span class="exp-date">Mar 2007 — Jun 2008</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Planned and executed marketing events, managed media schedules, and conducted Chinese copywriting and translation.</li>
+                    <li>Liaised with advertising agencies, suppliers, graphic designers, production houses, and MediaCorp.</li>
+                    <li>Regularly updated website content to reflect current marketing strategies and achievements, while monitoring and achieving monthly KPIs.</li>
+                </ul>
+                <div class="exp-achievements">
+                    <div class="achievements-label">Key Accomplishments</div>
+                    <ul class="exp-list">
+                        <li>Organised press conferences and Hair Care Seminars featuring MediaCorp artistes.</li>
+                        <li>Contributed to the content creation and production of TV programs on Channel 8 and Channel U.</li>
+                        <li>Wrote Chinese advertisement copies for major newspapers.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Job 5 -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">Teeni Enterprise Pte Ltd</div>
+                        <div class="exp-role">Manager, Marketing &amp; Operation</div>
+                    </div>
+                    <span class="exp-date">Mar 2005 — Mar 2007</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Developed and executed comprehensive marketing strategies, organized promotional events, managed budgets, and oversaw media planning.</li>
+                    <li>Deployed to Taiwan for an intensive 2-week sales, marketing, and product training program to prepare for new retail outlet launches.</li>
+                    <li>Conceptualized, translated, and proofread all marketing materials to ensure brand consistency.</li>
+                    <li>Monitored sales performance and prepared detailed reports for management.</li>
+                    <li>Oversaw full outlet operations — HR, customer database, stock ordering, pricing.</li>
+                    <li>Recruited, trained, and managed beauty advisors; conducted ongoing skincare product training.</li>
+                </ul>
+                <div class="exp-achievements">
+                    <div class="achievements-label">Key Accomplishments</div>
+                    <ul class="exp-list">
+                        <li>Leveraged advanced training from Taiwan to establish two successful skincare retail outlets and five retail counters within major departmental stores.</li>
+                        <li>Implemented aggressive, results-driven marketing strategies including roadshows and joint promotions, significantly increasing brand footprint and revenue.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Career Break -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">Career Break — Professional Development</div>
+                        <div class="exp-role">Upskilling in Digital Marketing, AI &amp; Marketing Technologies</div>
+                    </div>
+                    <span class="exp-date">Jan 2026 — Jul 2026</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Pursuing structured training in Digital Marketing, AI, and related marketing technologies while applying new skills through hands-on TikTok affiliate marketing, content creation, and campaign performance analysis.</li>
+                </ul>
+            </div>
+
+            <!-- Freelance -->
+            <div class="exp-card reveal">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-company">Freelance Translator, Editor, Copywriter &amp; Digital Content Creator</div>
+                        <div class="exp-role">Independent Practice</div>
+                    </div>
+                    <span class="exp-date">Dec 2018 — Apr 2024</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Transitioned to freelance work to balance family responsibilities after my daughter entered primary school. Delivered translation, editing, copywriting, localisation, and digital content projects for clients while maintaining and expanding professional marketing and communication skills.</li>
+                </ul>
+                <div class="exp-achievements">
+                    <div class="achievements-label">Selected Freelance Projects</div>
+                    <ul class="freelance-grid" style="margin-top:0.5rem;">
+                        <li>Investment pitch decks — Ascott Hotel Group</li>
+                        <li>Website — Fairmont Hotels &amp; Resorts</li>
+                        <li>Media releases — BreadTalk Group</li>
+                        <li>TV ad script — Singapore 2010 Youth Olympic Games</li>
+                        <li>Product risk rating — DBS Bank</li>
+                        <li>Legal documents (Facility Letter, Deed of Revocation)</li>
+                        <li>Newsletter — VICOM Ltd</li>
+                        <li>Marketing letter — Far East Organization (Inessence)</li>
+                        <li>Content — Beijing 101 Haircare Consultants</li>
+                        <li>Content — skincare brands</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ====== EDUCATION & CERTIFICATIONS ====== -->
+<section class="section" id="education" style="background: var(--bg-alt);">
+    <div class="section-inner">
+        <div class="section-label reveal">Education &amp; Certifications</div>
+        <h2 class="section-title reveal">Always learning.</h2>
+        <p class="section-desc reveal">Formal education, professional certifications, and continuous upskilling.</p>
+        <div class="two-col reveal">
+            <!-- Left: Education + Award -->
+            <div>
+                <div class="info-card">
+                    <h3>National University of Singapore</h3>
+                    <div class="info-sub">Bachelor of Arts — Chinese Studies</div>
+                </div>
+                <div class="info-card">
+                    <h3>English College (Johor Bahru, Malaysia)</h3>
+                    <div class="info-sub">STPM (equivalent to "A" Level)</div>
+                    <div class="info-detail">Mathematics, Chemistry, Biology, General Paper</div>
+                </div>
+                <div class="highlight-card" style="margin-top:1.25rem;">
+                    <div class="icon-circle">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <div>
+                        <h4>Best Employee of the Month</h4>
+                        <p>Teeni Enterprise Pte Ltd</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right: Certifications -->
+            <div>
+                <div class="info-card">
+                    <h3 style="margin-bottom:1rem;">Certifications</h3>
+                    <ul class="cert-list">
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Professional Diploma in Digital Marketing, Lithan Academy</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Executive Certificate in Brand Innovation with AI-Integrated Marketing, SMU</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> TikTok Marketing &amp; Ads for Business Certificate, SMU</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Artificial Intelligence (AI) in Marketing Certificate, SMU</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Digital Marketing — LinkedIn Marketing for Businesses</li>
+                        <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> NICF — PMP Certificate of Completion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== LANGUAGES & VOLUNTEER ====== -->
+<section class="section" id="languages">
+    <div class="section-inner">
+        <div class="section-label reveal">Languages &amp; Volunteer Work</div>
+        <h2 class="section-title reveal">Bilingual by nature,<br>multicultural by practice.</h2>
+        <div class="two-col reveal" style="margin-top:2.5rem;">
+            <!-- Languages -->
+            <div>
+                <div class="info-card">
+                    <h3 style="margin-bottom:1.25rem;">Languages</h3>
+                    <div class="lang-item">
+                        <div class="lang-label"><span>Chinese &amp; Dialects</span><span class="lang-level">Native</span></div>
+                        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%;"></div></div>
+                    </div>
+                    <div class="lang-item">
+                        <div class="lang-label"><span>English</span><span class="lang-level">Fluent</span></div>
+                        <div class="lang-bar"><div class="lang-bar-fill" style="width:95%;"></div></div>
+                    </div>
+                    <div class="lang-item">
+                        <div class="lang-label"><span>Malay</span><span class="lang-level">Intermediate</span></div>
+                        <div class="lang-bar"><div class="lang-bar-fill" style="width:60%;"></div></div>
+                    </div>
+                    <div class="lang-item">
+                        <div class="lang-label"><span>German</span><span class="lang-level">Basic</span></div>
+                        <div class="lang-bar"><div class="lang-bar-fill" style="width:30%;"></div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Volunteer -->
+            <div>
+                <div class="info-card">
+                    <h3>Oriental Radio Singapore</h3>
+                    <div class="info-sub">Volunteer Translator (Buddhist Practice Centre)</div>
+                    <div class="info-meta">2006 — Present</div>
+                    <div class="info-detail" style="margin-top:0.75rem;">
+                        <ul class="exp-list" style="margin-top:0;">
+                            <li>Provide translation services for religious texts, teachings, and communications between English and Chinese.</li>
+                            <li>Collaborate with other volunteers to ensure accurate and effective translation.</li>
+                            <li>Assist in various aspects of centre operations and events during weekly duty assignments.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CTA / CONTACT ====== -->
+<section class="cta-section" id="contact" style="background: var(--bg-alt);">
+    <div class="cta-card reveal">
+        <div class="cta-badge">● Available Now</div>
+        <h2>Let's build something<br>remarkable together.</h2>
+        <p>Open to digital &amp; growth marketing roles across Singapore.</p>
+        <div class="hero-actions" style="margin-bottom:1.5rem;">
+            <a href="mailto:ge_wnie@hotmail.com" class="btn btn-primary">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                Email Me
+            </a>
+            <a href="tel:+6596792746" class="btn btn-ghost">Call 9679 2746</a>
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted);">Notice Period: 2 Weeks · Singapore Citizen</p>
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+    <p>© 2026 <span class="footer-name">Yee Winnie</span>. Digital &amp; Growth Marketing Professional. Singapore.</p>
+</footer>
+
+<script>
+    // Scroll reveal animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Animate language bars
+    const langObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const targetWidth = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => { bar.style.width = targetWidth; }, 100);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.lang-bar-fill').forEach(bar => langObserver.observe(bar));
+
+    // Navbar shrink on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            nav.style.padding = '0.6rem 2rem';
+        } else {
+            nav.style.padding = '1rem 2rem';
+        }
+    });
+</script>
+
+</body>
+</html>
